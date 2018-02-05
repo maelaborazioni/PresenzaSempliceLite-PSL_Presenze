@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry excluding=".stp/|medias/" kind="src" path=""/>
+	<buildpathentry exported="true" kind="prj" path="/EW_Giornaliera"/>
+	<buildpathentry exported="true" kind="prj" path="/PSL_Lookup"/>
+	<buildpathentry exported="true" kind="prj" path="/PSL_Report"/>
+	<buildpathentry exported="true" kind="prj" path="/PSL_Shared"/>
+	<buildpathentry exported="true" kind="prj" path="/PV_Report"/>
+	<buildpathentry exported="true" kind="prj" path="/PV_Richieste_Unified"/>
+	<buildpathentry exported="true" kind="prj" path="/utility"/>
+</buildpath>
