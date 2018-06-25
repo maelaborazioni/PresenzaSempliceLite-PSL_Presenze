@@ -10,9 +10,10 @@ function init(month, festivita, hours, eventsDataset, certificati, assunzione, c
 	{
 		var tab = getTabForDay(day);
 		if (tab.isEnabled() && festivita.map(function(f){ return f.data; }).indexOf(day) == -1)
+		{
 			tab.setEditDisabled('Giorno non festivo');
-		
-		getTabForDay(day).disableSelection();
+			getTabForDay(day).disableSelection();
+		}		
 	}
 	
 	return this;
