@@ -36,3 +36,24 @@ function lookupLavoratori(event, multiSelect, disabledElements)
 		function(record){ return record.getPKs()[0]; }
 	);
 }
+/**
+ * Perform the element default action.
+ *
+ * @param {JSEvent} event the event that triggered the action
+ *
+ * @private
+ *
+ * @properties={typeid:24,uuid:"8DA10B2F-E9EE-4535-BCAC-5085F8686AC4"}
+ */
+function onActionBtnConfermaRichiesta(event) 
+{
+	// ticket 15135 : data la gestione dell'inserimento variazioni in PSL, verifica se si posssa trattare di duplicazione di voce già inserita
+	var recReq = globals.getEmployeeRequest(v_lavoratori[0],request.idtabrichiestadettaglio,vAnno * 100 + vMese);
+	if(recReq != null)
+	{
+		showGenericError(new Error("La voce è già stata inserita per il dipendente nel periodo"));
+		return;
+	}	
+	
+	confermaRichiesta(event);
+}

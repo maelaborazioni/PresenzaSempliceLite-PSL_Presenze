@@ -85,7 +85,13 @@ function onAction$btn_add(event)
 		choiceForm.vMese = v_mese;
 		choiceForm.v_lavoratori = v_lavoratori;
 		choiceForm.vTipoRichiesta = globals.TipoRichiesta.SINGOLA;
-	
+		
+		choiceForm.vCategoriaRichiesta = 0;
+		choiceForm.vCodRegola = null;
+		choiceForm.vDettaglioRichiesta = null;
+		choiceForm.vCodRichiesta = null;
+	    choiceForm.vRegola = null;
+	    
 	newRequest();
 }
 

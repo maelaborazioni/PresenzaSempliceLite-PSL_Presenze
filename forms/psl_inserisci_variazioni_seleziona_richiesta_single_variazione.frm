@@ -51,8 +51,15 @@ typeid:7,
 uuid:"401DE5EC-73E9-477A-A390-A7752D7E19D0"
 },
 {
+customProperties:"methods:{\
+onActionMethodID:{\
+arguments:null,\
+parameters:null\
+}\
+}",
 extendsID:"870213CB-E9CA-4125-967A-DB4DE55FAB22",
 imageMediaID:"E81B9457-BBFD-446B-A4EB-C4D5780FB850",
+onActionMethodID:"8DA10B2F-E9EE-4535-BCAC-5085F8686AC4",
 styleClass:"btn_confirm",
 typeid:7,
 uuid:"480CAF37-B2EE-4B6B-A5A1-505835FD56F3"
