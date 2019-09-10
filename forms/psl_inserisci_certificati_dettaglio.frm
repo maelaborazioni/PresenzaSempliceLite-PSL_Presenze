@@ -7,8 +7,8 @@ formIndex:3,
 items:[
 {
 containsFormID:"67D491E8-A524-4B60-980D-C8E5BF0FBE01",
-location:"0,90",
-relationName:"lavoratori_to_v_riepilogocertificati",
+location:"83,98",
+relationName:"lavoratori_to_storico_certificati",
 text:"psl_storico_certificati",
 typeid:15,
 uuid:"B11BF823-3CC5-4CAD-84E2-C991E281C512"

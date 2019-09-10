@@ -25,7 +25,8 @@ function getMainForm()
  */
 function refreshList()
 {
-	databaseManager.refreshRecordFromDatabase(lavoratori_to_v_riepilogocertificati, -1);
+	databaseManager.refreshRecordFromDatabase(lavoratori_to_storico_certificati, -1);
+//	databaseManager.refreshRecordFromDatabase(lavoratori_to_v_riepilogocertificati, -1);
 }
 
 /**
@@ -45,22 +46,44 @@ function setMonth(month)
  * @AllowToRunInFind
  */
 function filterCertificati(fs)
-{
-	fs = fs || lavoratori_to_v_riepilogocertificati;
-	
-	if(fs && fs.find())
+{	
+	/** @type{JSFoundSet<db:/ma_presenze/storico_certificati>}*/
+	var fsCertificatiRiepilogo = databaseManager.getFoundSet(globals.Server.MA_PRESENZE,globals.Table.STORICO);
+	if(fsCertificatiRiepilogo.find())
 	{
-		var firstDay = scopes.date.FirstDayOfMonth(v_month);
-		var lastDay  = scopes.date.LastDayOfMonth(v_month);
+		fsCertificatiRiepilogo.ideventoclasse = vIdEventoClasse || -1;
+		fsCertificatiRiepilogo.idlavoratore = idlavoratore;
+		fsCertificatiRiepilogo.idstoricolegato = 0;
 		
-		fs.ideventoclasse = vIdEventoClasse || -1;
-		fs.datainizio     = globals.ComparisonOperator.LE + globals.formatForFind(lastDay);
-		fs.datafine       = globals.ComparisonOperator.GE + globals.formatForFind(firstDay);
-		
-		fs.search();
+		fsCertificatiRiepilogo.search();
 	}
 	
-	return fs;
+	if(lavoratori_to_storico_certificati.find() && fsCertificatiRiepilogo.getSize())
+	{		
+		lavoratori_to_storico_certificati.idstoricocertificato = fsCertificatiRiepilogo.idstoricocertificato;
+		
+		lavoratori_to_storico_certificati.search();
+	}	
+	
+	return fsCertificatiRiepilogo;
+	
+//	fs ? databaseManager.refreshRecordFromDatabase(fs,-1) : databaseManager.refreshRecordFromDatabase(lavoratori_to_v_riepilogocertificati,-1)
+//	
+//	fs = fs || (lavoratori_to_v_riepilogocertificati.loadAllRecords() ? lavoratori_to_v_riepilogocertificati : null);
+//	
+//	if(fs && fs.find())
+//	{
+////		var firstDay = scopes.date.FirstDayOfMonth(v_month);
+////		var lastDay  = scopes.date.LastDayOfMonth(v_month);
+//		
+//		fs.ideventoclasse = vIdEventoClasse || -1;
+////		fs.datainizio     = globals.ComparisonOperator.LE + globals.formatForFind(lastDay);
+////		fs.datafine       = globals.ComparisonOperator.GE + globals.formatForFind(firstDay);
+//		
+//		fs.search();
+//	}
+//	
+//	return fs;
 }
 
 /**
@@ -146,8 +169,10 @@ function refreshDetail()
 	else
 		elements.tab_certificati.enabled = false;
 	
-	if(lavoratori_to_v_riepilogocertificati)
-		updateDetail(lavoratori_to_v_riepilogocertificati.idstoricocertificato);
+	if(lavoratori_to_storico_certificati)
+		updateDetail(lavoratori_to_storico_certificati.idstoricocertificato);
+//	if(lavoratori_to_v_riepilogocertificati)
+//		updateDetail(lavoratori_to_v_riepilogocertificati.idstoricocertificato);
 }
 
 /**

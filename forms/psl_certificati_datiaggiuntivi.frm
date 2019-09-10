@@ -8,7 +8,14 @@ typeid:7,
 uuid:"9B2260AD-EFFF-4E64-8982-8A475CDE49EF"
 },
 {
+customProperties:"methods:{\
+onActionMethodID:{\
+arguments:null,\
+parameters:null\
+}\
+}",
 extendsID:"D0E019E1-5573-4E28-AB3C-A135EF87E305",
+onActionMethodID:"1C3777F4-D29F-4FB0-BA9C-B1B0E5323863",
 styleClass:"btn_confirm",
 typeid:7,
 uuid:"B199163C-8917-4141-99DB-5D66BEDE2E81"

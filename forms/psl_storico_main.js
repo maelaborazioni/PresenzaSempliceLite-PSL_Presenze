@@ -127,16 +127,34 @@ function addCertificate(event)
 		if (idStoricoPadre == null)	// selezione annullata
 			return;
 		else
-		if (idStoricoPadre == -1)
-			forzaInserimentoPadreCongedo();
-		else
-		{
-			inizializzaRiepilogo(idStoricoPadre);
-			_super.addCertificate(event);
-		}
+			if (idStoricoPadre == -1)
+				forzaInserimentoPadreCongedo();
+			else
+			{
+				inizializzaRiepilogo(idStoricoPadre);
+				_super.addCertificate(event);
+			}
 	}
 	else
 		_super.addCertificate(event);
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param event
+ * @param idStoricoPadre
+ *
+ * @properties={typeid:24,uuid:"D46F92F8-CF9C-4CE0-A020-22C436A3AE14"}
+ */
+function buildCertificate(event,idStoricoPadre)
+{
+	if (idStoricoPadre > 0)
+	{
+		inizializzaRiepilogo(idStoricoPadre);
+		_super.addCertificate(event);
+	}
+	else
+		forzaInserimentoCertificatoPadreCongedo();
 }
 
 /**
