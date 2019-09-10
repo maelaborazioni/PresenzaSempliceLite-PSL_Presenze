@@ -995,7 +995,6 @@ function processData(params)
 			success = controlliPreliminari(params) && saveState();
 			if(success)
 			{
-				elaborazione.compilata = true;
 				// le ore sono aggiornate esternamente a servoy, ricarichiamole
 				state.data[ditta].ore = scopes.psl.Presenze.RestoreDataFromDatabase(state.data[ditta].ore, ditta, periodo, params.lavoratori);
 				success = saveState();
@@ -1009,6 +1008,12 @@ function processData(params)
 		 */
 		if(success)
 		{
+            // TODO verificare se funziona stop del flusso nel caso di eventi bloccanti			
+			var _objCatBloccanti = scopes.giornaliera.ottieniCategorieBloccanti(ditta,periodo.getFullYear() * 100 + periodo.getMonth() + 1); 
+			
+			if(_objCatBloccanti.bloccante)
+				throw new Error('Sistemare le eventuali giornate squadrate, gli eventi da definire e gli eventi bloccanti prima di proseguire!');
+						
 			success = chiusuraMese(params) && saveState();
 			if(!success)
 				elaborazione.message = 'Errore durante l\'esecuzione di chiusura mese. Contattare il servizio di assistenza per la verifica dell\'anomalia riscontrata.';
