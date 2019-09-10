@@ -1,4 +1,4 @@
-dataSource:"db:/ma_presenze/v_riepilogocertificati",
+dataSource:"db:/ma_presenze/storico_certificati",
 encapsulation:60,
 items:[
 {
@@ -52,7 +52,7 @@ uuid:"4E6B6BAD-1D8A-4E8C-ABE5-99F85DB4E2B5"
 },
 {
 anchors:11,
-dataProviderID:"v_riepilogocertificati_to_e2eventiclassi.descrizioneclasseevento",
+dataProviderID:"storico_certificati_to_v_riepilogocertificati.v_riepilogocertificati_to_e2eventiclassi.descrizioneclasseevento",
 editable:false,
 format:"0",
 location:"50,20",
@@ -63,7 +63,7 @@ typeid:4,
 uuid:"8421FF2B-FFC1-4636-A12E-52072E62750C"
 },
 {
-dataProviderID:"v_riepilogocertificati_to_e2eventiclassi.codevento",
+dataProviderID:"storico_certificati_to_v_riepilogocertificati.v_riepilogocertificati_to_e2eventiclassi.codevento",
 editable:false,
 format:"0",
 location:"0,20",
@@ -92,7 +92,7 @@ uuid:"C65E1BC4-A23F-4741-9508-781575D00BF5"
 },
 {
 anchors:3,
-dataProviderID:"datainizio",
+dataProviderID:"storico_certificati_to_v_riepilogocertificati.datainizio",
 editable:false,
 format:"dd/MM/yyyy",
 location:"220,20",
@@ -110,7 +110,7 @@ uuid:"D7AEF49D-834E-49CE-88EE-25C739CB519A"
 },
 {
 anchors:3,
-dataProviderID:"datafine",
+dataProviderID:"storico_certificati_to_v_riepilogocertificati.datafine",
 editable:false,
 format:"dd/MM/yyyy",
 location:"290,20",

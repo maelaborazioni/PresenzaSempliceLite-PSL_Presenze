@@ -25,20 +25,33 @@ function onRecordSelection(event)
  */
 function onAction$btn_datiaggiuntivi(event) 
 {
-	var fs = v_riepilogocertificati_to_storico_datiaggiuntivi;
-	if (fs && fs.getSize() > 0)
-		showDatiAggiuntivi();
+//	var fs = storico_certificati_to_v_riepilogocertificati.v_riepilogocertificati_to_storico_datiaggiuntivi;
+//	if (fs && fs.getSize() > 0)
+	if(globals.getIdDatiAggiuntiviFromStoricoPadre(idstoricocertificato))
+	   showDatiAggiuntivi();
 }
 
 /**
  * @properties={typeid:24,uuid:"0BB25C88-0FC0-45E5-B228-11EDD9BF2555"}
+ * @AllowToRunInFind
  */
 function showDatiAggiuntivi()
 {
 	var form = forms.storico_dati_aggiuntivi_tab_dtl;
 	// serve per la modifica dei dati
 	databaseManager.startTransaction();
-	globals.ma_utl_showFormInDialog(form.controller.getName(), 'Dati aggiuntivi', v_riepilogocertificati_to_storico_datiaggiuntivi);
+	
+	var idStoricoDatiAgg = globals.getIdDatiAggiuntiviFromStoricoPadre(idstoricocertificato);
+	
+	/** @type {JSFoundSet<db:/ma_presenze/storico_datiaggiuntivi>}*/
+	var fsDatiAgg = databaseManager.getFoundSet(globals.Server.MA_PRESENZE,globals.Table.STORICO_DATI_AGGIUNTIVI);
+	if(fsDatiAgg.find())
+	{
+		fsDatiAgg.idstoricodatiaggiuntivi = idStoricoDatiAgg;
+		fsDatiAgg.search();
+	}
+	
+	globals.ma_utl_showFormInDialog(form.controller.getName(), 'Dati aggiuntivi', fsDatiAgg);
 }
 
 /**
@@ -54,7 +67,7 @@ function onRender$btn_datiaggiuntivi(event)
 {
 	var renderable = event.getRenderable();
 	
-	if (idstoricodatiaggiuntivi)
+	if (globals.getIdDatiAggiuntiviFromStoricoPadre(idstoricocertificato))
 		renderable.enabled = true;
 	else
 		renderable.enabled = false;
